@@ -1,0 +1,447 @@
+{
+  "attackers": {
+    "Ying ⭐": {
+      "X": 1,
+      "Y": 8,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Jackal ⭐": {
+      "X": 1,
+      "Y": 15,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Twitch ⭐": {
+      "X": 0,
+      "Y": 22,
+      "GRIP": "",
+      "BARREL": "Extended",
+      "SIGHTS": "20"
+    },
+    "Fuze ⭐": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "Vertical",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Glaz ⭐": {
+      "X": 0,
+      "Y": 8,
+      "GRIP": "",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Ace ⭐": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "Vertical",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Ash ⭐": {
+      "X": 0,
+      "Y": 15,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Lion ⭐": {
+      "X": 1,
+      "Y": 8,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Amaru": {
+      "X": -1,
+      "Y": 17,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Brava": {
+      "X": 0,
+      "Y": 15,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    },
+    "Buck": {
+      "X": 1,
+      "Y": 16,
+      "GRIP": "",
+      "BARREL": "Compensator",
+      "SIGHTS": "20"
+    },
+    "Capitão": {
+      "X": 0,
+      "Y": 15,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    },
+    "Deimos": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "",
+      "BARREL": "Compensator",
+      "SIGHTS": "2.0"
+    },
+    "Flores": {
+      "X": 0,
+      "Y": 15,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Finka": {
+      "X": 0,
+      "Y": 13,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Grim": {
+      "X": 0,
+      "Y": 16,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    },
+    "Iana": {
+      "X": 0,
+      "Y": 20,
+      "GRIP": "Horizontal",
+      "BARREL": "Compensator",
+      "SIGHTS": "2.0"
+    },
+    "IQ": {
+      "X": 0,
+      "Y": 16,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    },
+    "Maverick": {
+      "X": 0,
+      "Y": 18,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Nøkk": {
+      "X": 1,
+      "Y": 17,
+      "GRIP": "",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Nomad": {
+      "X": -1,
+      "Y": 16,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Nomad 2": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "",
+      "BARREL": "Compensator",
+      "SIGHTS": "2.0"
+    },
+    "Ram": {
+      "X": 0,
+      "Y": 23,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Sens": {
+      "X": 1,
+      "Y": 9,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.5"
+    },
+    "Sledge": {
+      "X": 1,
+      "Y": 13,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Striker": {
+      "X": 0,
+      "Y": 18,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.5"
+    },
+    "Thatcher": {
+      "X": 1,
+      "Y": 13,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "2.0"
+    },
+    "Zero": {
+      "X": 0,
+      "Y": 16,
+      "GRIP": "",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    }
+  },
+  "defenders": {
+    "Doc ⭐": {
+      "X": 0,
+      "Y": 12,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.5"
+    },
+    "Castle ⭐": {
+      "X": 0,
+      "Y": 0,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.5"
+    },
+    "Azami ⭐": {
+      "X": 0,
+      "Y": 7,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Torn ⭐": {
+      "X": 0,
+      "Y": 8,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Rook ⭐": {
+      "X": 0,
+      "Y": 12,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.5"
+    },
+    "Kaid ⭐": {
+      "X": 0,
+      "Y": 17,
+      "GRIP": "Horizontal",
+      "BARREL": "Supresor",
+      "SIGHTS": "2.5"
+    },
+    "Goyo ⭐": {
+      "X": 0,
+      "Y": 17,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    },
+    "Kapkan ⭐": {
+      "X": 0,
+      "Y": 7,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Alibi": {
+      "X": 0,
+      "Y": 6,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    },
+    "Aruni": {
+      "X": -1,
+      "Y": 10,
+      "GRIP": "Horizontal",
+      "BARREL": "Supresor",
+      "SIGHTS": "2.5"
+    },
+    "Bandit": {
+      "X": 0,
+      "Y": 7,
+      "GRIP": "",
+      "BARREL": "Extended",
+      "SIGHTS": "0"
+    },
+    "Caveira": {
+      "X": 0,
+      "Y": 5,
+      "GRIP": "",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Clash": {
+      "X": 0,
+      "Y": 10,
+      "GRIP": "",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Ecko": {
+      "X": 0,
+      "Y": 15,
+      "GRIP": "Horizontal",
+      "BARREL": "",
+      "SIGHTS": "2.5"
+    },
+    "Ela": {
+      "X": 2,
+      "Y": 15,
+      "GRIP": "Horizontal",
+      "BARREL": "Supresor",
+      "SIGHTS": "1.0"
+    },
+    "Fenrir": {
+      "X": 0,
+      "Y": 7,
+      "GRIP": "",
+      "BARREL": "Extended",
+      "SIGHTS": "0"
+    },
+    "Frost": {
+      "X": 0,
+      "Y": 10,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.5"
+    },
+    "Jäger": {
+      "X": 0,
+      "Y": 14,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Lesion": {
+      "X": 0,
+      "Y": 7,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Maestro": {
+      "X": 0,
+      "Y": 6,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.0"
+    },
+    "Melusi": {
+      "X": 0,
+      "Y": 9,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Mira": {
+      "X": 0,
+      "Y": 10,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Mozi": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Mute": {
+      "X": 0,
+      "Y": 20,
+      "GRIP": "Horizontal",
+      "BARREL": "Compensator",
+      "SIGHTS": "1.0"
+    },
+    "Pulse": {
+      "X": 0,
+      "Y": 6,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Sentry": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Smoke": {
+      "X": 0,
+      "Y": 20,
+      "GRIP": "Horizontal",
+      "BARREL": "Compensator",
+      "SIGHTS": "1.0"
+    },
+    "Solis 1": {
+      "X": 0,
+      "Y": 20,
+      "GRIP": "Horizontal",
+      "BARREL": "Compensator",
+      "SIGHTS": "1.0"
+    },
+    "Skopós": {
+      "X": 0,
+      "Y": 5,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Tachanka": {
+      "X": 0,
+      "Y": 12,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "2.5"
+    },
+    "Thunderbird": {
+      "X": 0,
+      "Y": 13,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Valk": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    },
+    "Vigil": {
+      "X": 0,
+      "Y": 12,
+      "GRIP": "Horizontal",
+      "BARREL": "Supressor",
+      "SIGHTS": "1.0"
+    },
+    "Wamai": {
+      "X": 0,
+      "Y": 17,
+      "GRIP": "Angled",
+      "BARREL": "Extended",
+      "SIGHTS": "2.5"
+    },
+    "Warden": {
+      "X": 0,
+      "Y": 11,
+      "GRIP": "Horizontal",
+      "BARREL": "Extended",
+      "SIGHTS": "1.0"
+    }
+  }
+}
