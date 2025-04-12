@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>R6 Recoil Manager</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      :root {
+        --background-color: #1a1a1a;
+        --container-color: #2a2a2a;
+        --accent-color: #2499ff;
+        --text-color: #e0e0e0;
+        --disabled-color: #666;
+        --button-color: #2499ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--background-color);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: var(--text-color);
+        overflow-x: hidden;
+      }
+
+      .container {
+        background: var(--container-color);
+        border-radius: 12px;
+        padding: 24px;
+        width: 92%;
+        max-width: 380px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+        text-align: center;
+      }
+
+      .logo {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: 0 auto 24px auto;
+        display: block;
+      }
+
+      h2 {
+        margin-bottom: 24px;
+        color: #adb8c2;
+        font-size: 1.7rem;
+      }
+
+      label {
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 6px;
+        display: block;
+        text-align: left;
+        color: var(--text-color);
+      }
+
+      select,
+      button {
+        width: 100%;
+        padding: 14px;
+        margin-bottom: 18px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.05rem;
+        background-color: #3a3a3a;
+        color: var(--text-color);
+      }
+
+      select:disabled,
+      button:disabled {
+        background-color: var(--disabled-color);
+        color: #999;
+      }
+
+      button {
+        background-color: var(--button-color);
+        color: #000;
+        font-weight: bold;
+        transition: background 0.3s ease;
+        cursor: pointer;
+      }
+
+      button:hover:not(:disabled) {
+        background-color: #5bc0ff;
+      }
+
+      .status {
+        font-size: 0.95rem;
+        text-align: center;
+        margin-top: 18px;
+        white-space: pre-line;
+        color: var(--text-color);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        min-height: 4em;
+      }
+
+      .status.fade {
+        opacity: 0.4;
+      }
+
+      @media (min-width: 600px) {
+        .container {
+          padding: 30px;
+        }
+
+        h2 {
+          font-size: 1.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="logo.png" alt="Rainbow Six Siege Logo" class="logo" />
+      <h2>Recoil Manager</h2>
+
+      <label for="role">Role:</label>
+      <select id="role" disabled>
+        <option value="attackers">Attackers</option>
+        <option value="defenders">Defenders</option>
+      </select>
+
+      <label for="operator">Operator:</label>
+      <select id="operator" disabled>
+        <option value="[none]">[none]</option>
+      </select>
+
+      <button id="applyBtn" disabled>Apply</button>
+      <div class="status" id="status">⌛ Loading...</div>
+    </div>
+
+    <script>
+      const BIN_ID = "68fd4bd9d0ea881f40bbcd36";
+      const API_KEY =
+        "$2a$10$1X5On2yBUkmtbHIGbyoGjeOI7h2Vd/hnkfJW598riTiG0EITlhZkG";
+      const OPERATORS_URL =
+        "https://gist.githubusercontent.com/DiegoRomario/72a427e60a63c513d6307546707be363/raw/911783c18e594f7384727e3be40ab7a87f48c8d9/operators.json";
+      const SELECTED_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`;
+
+      const roleSelect = document.getElementById("role");
+      const operatorSelect = document.getElementById("operator");
+      const applyBtn = document.getElementById("applyBtn");
+      const statusText = document.getElementById("status");
+
+      let operatorsData = {};
+
+      function enableControls() {
+        roleSelect.disabled = false;
+        operatorSelect.disabled = false;
+        applyBtn.disabled = false;
+      }
+
+      function disableControls() {
+        roleSelect.disabled = true;
+        operatorSelect.disabled = true;
+        applyBtn.disabled = true;
+      }
+
+      function loadOperators(selectedOperator = "[none]") {
+        const role = roleSelect.value;
+        const ops = Object.keys(operatorsData[role] || []);
+        operatorSelect.innerHTML = "";
+
+        const noneOption = document.createElement("option");
+        noneOption.value = "[none]";
+        noneOption.textContent = "[none]";
+        operatorSelect.appendChild(noneOption);
+
+        ops.forEach((op) => {
+          const option = document.createElement("option");
+          option.value = op;
+          option.textContent = op;
+          operatorSelect.appendChild(option);
+        });
+
+        operatorSelect.value = selectedOperator || "[none]";
+      }
+
+      function updateStatus(text) {
+        statusText.classList.add("fade");
+        setTimeout(() => {
+          statusText.textContent = text;
+          statusText.classList.remove("fade");
+        }, 200);
+      }
+
+      // Initialize
+      Promise.all([
+        fetch(OPERATORS_URL).then((res) => res.json()),
+        fetch(SELECTED_URL, {
+          headers: { "X-Master-Key": API_KEY },
+        }).then((res) => res.json()),
+      ])
+        .then(([operatorsJson, selectedJson]) => {
+          operatorsData = operatorsJson;
+          const selectedData = selectedJson.record || {
+            role: "attackers",
+            operator: "[none]",
+          };
+
+          roleSelect.value = selectedData.role;
+          loadOperators(selectedData.operator);
+
+          if (selectedData.operator !== "[none]") {
+            const opData =
+              operatorsData[selectedData.role]?.[selectedData.operator];
+            if (opData) {
+              const emojiRole = selectedData.role === "attackers" ? "⚔️" : "🛡️";
+              const {
+                X: x,
+                Y: y,
+                GRIP: grip,
+                BARREL: barrel,
+                SIGHTS: sights,
+              } = opData;
+
+              updateStatus(
+                `${emojiRole} Operator: ${selectedData.operator}\n📐 X: ${x} | Y: ${y}\n✊ Grip: ${grip}\n🔫 Barrel: ${barrel}\n🔭 Sight: ${sights}`
+              );
+            }
+          } else {
+            updateStatus("⠀");
+          }
+
+          enableControls();
+        })
+        .catch((err) => {
+          updateStatus("❌ Error loading data");
+          console.error(err);
+        });
+
+      roleSelect.addEventListener("change", () => loadOperators("[none]"));
+
+      applyBtn.addEventListener("click", () => {
+        const role = roleSelect.value;
+        const operator = operatorSelect.value;
+
+        let operatorData = {
+          X: 0,
+          Y: 0,
+          GRIP: "N/A",
+          BARREL: "N/A",
+          SIGHTS: "N/A",
+        };
+
+        if (operator !== "[none]") {
+          operatorData = operatorsData[role]?.[operator];
+          if (!operatorData) return;
+        }
+
+        const {
+          X: x,
+          Y: y,
+          GRIP: grip,
+          BARREL: barrel,
+          SIGHTS: sights,
+        } = operatorData;
+
+        const emojiRole =
+          operator === "[none]" ? "➖" : role === "attackers" ? "⚔️" : "🛡️";
+
+        updateStatus("⌛ Applying...");
+        disableControls();
+
+        fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Master-Key": API_KEY,
+            "X-Bin-Versioning": "false",
+          },
+          body: JSON.stringify({ role, operator }),
+        })
+          .then((res) => {
+            if (!res.ok) throw new Error("Update error");
+            return res.json();
+          })
+          .then(() => {
+            setTimeout(() => {
+              updateStatus(
+                `${emojiRole} Operator: ${operator}\n📐 X: ${x} | Y: ${y}\n✊ Grip: ${grip}\n🔫 Barrel: ${barrel}\n🔭 Sight: ${sights}`
+              );
+              enableControls();
+            }, 7000);
+          })
+          .catch((err) => {
+            updateStatus("❌ Error applying operator");
+            console.error(err);
+            enableControls();
+          });
+      });
+    </script>
+  </body>
+</html>
