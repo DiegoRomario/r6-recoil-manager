@@ -10,21 +10,23 @@ import psutil
 LUA_SCRIPT_PATH = r""
 GHUB_TRAY_PATH = r"C:\Program Files\LGHUB\system_tray\lghub_system_tray.exe"
 SELECTED_OPERATOR_JSON_URL = "https://api.jsonbin.io/v3/b/68fd4bd9d0ea881f40bbcd36/latest"
-OPERATORS_JSON_URL = "https://gist.githubusercontent.com/DiegoRomario/72a427e60a63c513d6307546707be363/raw/911783c18e594f7384727e3be40ab7a87f48c8d9/operators.json"
+OPERATORS_JSON_URL = "https://api.jsonbin.io/v3/b/68fe3f3543b1c97be98271bb/latest"
 
 HEADERS = {
     "X-Master-Key": "$2a$10$1X5On2yBUkmtbHIGbyoGjeOI7h2Vd/hnkfJW598riTiG0EITlhZkG",
     "X-Bin-Meta": "false"
 }
 
-# === Load Operators from Gist ===
-def load_operators_from_gist():
+# === Load Operators from JSONBin ===
+def load_operators_from_jsonbin():
     try:
-        response = requests.get(OPERATORS_JSON_URL)
+        response = requests.get(OPERATORS_JSON_URL, headers=HEADERS)
         if response.status_code == 200:
-            return response.json()
+            data = response.json()
+            # JSONBin.io returns data in "record" field
+            return data.get("record", data)
         else:
-            print(f"[✗] Failed to load operators from Gist. Status: {response.status_code}")
+            print(f"[✗] Failed to load operators from JSONBin. Status: {response.status_code}")
             return {}
     except Exception as e:
         print(f"[✗] Error fetching operators JSON: {e}")
@@ -97,7 +99,7 @@ def countdown(seconds):
 def main():
     print("▶️  R6 Recoil Watcher Started")
     previous_selection = None
-    operators = load_operators_from_gist()
+    operators = load_operators_from_jsonbin()
 
     while True:
         countdown(15)

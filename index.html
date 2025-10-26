@@ -143,10 +143,10 @@
 
     <script>
       const BIN_ID = "68fd4bd9d0ea881f40bbcd36";
+      const OPERATORS_BIN_ID = "68fe3f3543b1c97be98271bb";
       const API_KEY =
         "$2a$10$1X5On2yBUkmtbHIGbyoGjeOI7h2Vd/hnkfJW598riTiG0EITlhZkG";
-      const OPERATORS_URL =
-        "https://gist.githubusercontent.com/DiegoRomario/72a427e60a63c513d6307546707be363/raw/911783c18e594f7384727e3be40ab7a87f48c8d9/operators.json";
+      const OPERATORS_URL = `https://api.jsonbin.io/v3/b/${OPERATORS_BIN_ID}/latest`;
       const SELECTED_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`;
 
       const roleSelect = document.getElementById("role");
@@ -198,13 +198,16 @@
 
       // Initialize
       Promise.all([
-        fetch(OPERATORS_URL).then((res) => res.json()),
+        fetch(OPERATORS_URL, {
+          headers: { "X-Master-Key": API_KEY },
+        }).then((res) => res.json()),
         fetch(SELECTED_URL, {
           headers: { "X-Master-Key": API_KEY },
         }).then((res) => res.json()),
       ])
         .then(([operatorsJson, selectedJson]) => {
-          operatorsData = operatorsJson;
+          // JSONBin.io returns data in "record" field
+          operatorsData = operatorsJson.record || operatorsJson;
           const selectedData = selectedJson.record || {
             role: "attackers",
             operator: "[none]",
